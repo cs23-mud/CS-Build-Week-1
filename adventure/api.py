@@ -8,6 +8,15 @@ from .models import *
 from rest_framework.decorators import api_view
 import json
 
+from util.sample_generator import World
+
+w = World()
+num_rooms = 100
+width = 10
+height = 10
+w.generate_rooms(width, height, num_rooms)
+w.print_rooms()
+
 # instantiate pusher
 # pusher = Pusher(app_id=config('PUSHER_APP_ID'), key=config('PUSHER_KEY'), secret=config('PUSHER_SECRET'), cluster=config('PUSHER_CLUSTER'))
 
@@ -20,7 +29,7 @@ def initialize(request):
     uuid = player.uuid
     room = player.room()
     players = room.playerNames(player_id)
-    return JsonResponse({'uuid': uuid, 'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
+    return JsonResponse({'uuid': uuid, 'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players, 'world': w.print_rooms()}, safe=True)
 
 
 # @csrf_exempt
