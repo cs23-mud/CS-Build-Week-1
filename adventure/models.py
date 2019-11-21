@@ -98,10 +98,10 @@ class World(models.Model):
 
             # Calculate the direction of the room to be created
             if direction > 0 and x < size_x - 1:
-                room_direction = "e"
+                room_direction = "w"
                 x += 1
             elif direction < 0 and x > 0:
-                room_direction = "w"
+                room_direction = "e"
                 x -= 1
             else:
                 # If we hit a wall, turn north and reverse direction
