@@ -10,10 +10,10 @@ class Room(models.Model):
     title = models.CharField(max_length=50, default="DEFAULT TITLE")
     description = models.CharField(
         max_length=500, default="DEFAULT DESCRIPTION")
-    n_to = models.IntegerField(default=200)
-    s_to = models.IntegerField(default=200)
-    e_to = models.IntegerField(default=200)
-    w_to = models.IntegerField(default=200)
+    n_to = models.IntegerField(default=999)
+    s_to = models.IntegerField(default=999)
+    e_to = models.IntegerField(default=999)
+    w_to = models.IntegerField(default=999)
     # x = models.IntegerField(default=0)
     # y = models.IntegerField(default=0)
 
