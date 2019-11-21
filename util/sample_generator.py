@@ -6,7 +6,7 @@
 # to see the world.
 
 
-class Room:
+class Rooms:
     def __init__(self, id, name, description, x, y):
         self.id = id
         self.name = name
@@ -85,6 +85,7 @@ class World:
             # Create a room in the given direction
             room = Room(room_count, "A Generic Room",
                         "This is a generic room.", x, y)
+            room.save()
             # Note that in Django, you'll need to save the room after you create it
 
             # Save the room in the World grid
