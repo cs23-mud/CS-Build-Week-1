@@ -4,6 +4,8 @@
 # You can modify generate_rooms() to create your own
 # procedural generation algorithm and use print_rooms()
 # to see the world.
+from django.contrib.auth.models import User
+from adventure.models import Player, Room
 
 
 class Rooms:
