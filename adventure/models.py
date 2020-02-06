@@ -1,3 +1,6 @@
+import requests
+import random
+import math
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -76,6 +79,9 @@ class World(models.Model):
         '''
         Fill up the grid, bottom to top, in a zig-zag pattern
         '''
+        # Initialize random choice variables
+        room_types = ['Enclosure', "Habitat", 'Sanctuary']
+        hundred = [random.randrange(1, 151) for _ in range(1, 101)]
 
         # Initialize the grid
         grid = [None] * size_y
@@ -111,8 +117,21 @@ class World(models.Model):
 
             # Create a room in the given direction
             # print(x, y)
-            room = Room(room_count, f"Room {room_count}",
-                        f"This is room #{room_count}.")
+            pokemon = requests.get(
+                f'https://pokeapi.co/api/v2/pokemon/{hundred[room_count]}').json()
+            print(pokemon['name'])
+            name = pokemon['name']
+            imageURL = pokemon['sprites']['front_shiny']
+
+            if pokemon:
+                room = Room(room_count, f"The {name} {random.choice(room_types)}",
+                            f"You see a number of {name}s, frolicking about.SPLIT{imageURL}")
+                print(f'{name} room created.')
+            else:
+                print("Error retrieving data. Please try again")
+                room = Room(room_count, f"Room {room_count}",
+                            f"You are in Room #{room_count}.")
+
             # Note that in Django, you'll need to save the room after you create it
 
             # Save the room in the World grid
