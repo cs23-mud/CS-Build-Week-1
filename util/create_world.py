@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from adventure.models import Player, Room, World
+from adventure.models import Player, World
 
 Room.objects.all().delete()
 
@@ -9,6 +9,7 @@ width = 10
 height = 10
 grid = w.generate_rooms(width, height, num_rooms)
 w.print_rooms(grid)
+
 
 players = Player.objects.all()
 for p in players:

@@ -1,11 +1,3 @@
-# Sample Python code that can be used to generate rooms in
-# a zig-zag pattern.
-#
-# You can modify generate_rooms() to create your own
-# procedural generation algorithm and use print_rooms()
-# to see the world.
-
-
 class Room:
     def __init__(self, id, name, description, x, y):
         self.id = id
